@@ -1,7 +1,9 @@
+import { useState } from "react";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import ProductListing from "./components/ProductListing/ProductListing";
 
 import "./index.scss";
+import SearchInput from "./components/SearchInput/SearchInput";
 
 const products = [
   {
@@ -25,9 +27,23 @@ const products = [
 ];
 
 function App() {
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (term) => {
+    setSearchTerm(term.target.value);
+    console.log(searchTerm);
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+    console.log(filteredProducts);
+  };
+
   const selectedProduct = products[0];
   return (
     <div>
+      <SearchInput value={searchTerm} onChange={(e) => handleSearch(e)} />
       <ProductListing products={products} />
       <ProductDetail product={selectedProduct} />
     </div>
