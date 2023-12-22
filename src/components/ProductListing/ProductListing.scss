@@ -1,0 +1,56 @@
+// ProductListing.scss
+
+.product-listing {
+  padding: 20px;
+  height: 100vh;
+
+  &.dark-mode {
+    background-color: #333;
+    color: #000;
+  }
+
+  .dark-mode-toggle {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .product-item {
+      width: 300px;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      .product-details {
+        h3 {
+          margin-top: 10px;
+          font-size: 1rem;
+        }
+
+        p {
+          margin-top: 5px;
+          color: #666;
+        }
+      }
+    }
+  }
+}
