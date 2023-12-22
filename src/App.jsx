@@ -1,9 +1,10 @@
+import Header from "./components/Header/Header.jsx";
 import "./index.scss";
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Header />
     </>
   );
 }
