@@ -1,0 +1,84 @@
+/* Hero.module.scss */
+
+.hero-container {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  padding: 40px;
+}
+
+.left-side {
+  flex: 1;
+
+  .hero-title {
+    font-size: 70px;
+    line-height: -150%;
+    margin-bottom: 30px;
+  }
+}
+
+.link {
+  background-color: rgb(5, 122, 255);
+  margin-top: 30px;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
+
+.right-side {
+  flex: 1;
+}
+
+.slider-container {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+
+  .slick-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.slider-container {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .image {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .slick-prev,
+  .slick-next {
+    z-index: 1;
+    &:before {
+      font-size: 20px;
+      color: #fff;
+    }
+  }
+
+  .slick-prev {
+    left: 10px;
+  }
+
+  .slick-next {
+    right: 10px;
+  }
+
+  .slick-dots {
+    bottom: 10px;
+    li {
+      button:before {
+        color: #fff;
+        font-size: 12px;
+      }
+    }
+  }
+}
