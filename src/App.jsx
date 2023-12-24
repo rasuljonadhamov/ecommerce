@@ -31,6 +31,7 @@ const products = [
 function App() {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleSearch = (term) => {
     setSearchTerm(term.target.value);
@@ -45,8 +46,8 @@ function App() {
   const selectedProduct = products[0];
   return (
     <div>
-      <Navbar />
-      <Hero />
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Hero isDarkMode={isDarkMode} />
       <ProductListing products={products} />
       <ProductDetail product={selectedProduct} />
     </div>

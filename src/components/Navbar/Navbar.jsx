@@ -5,9 +5,7 @@ import { FaRegMoon } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import "./Navbar.scss";
 
-const Navbar = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   return (
     <div className={isDarkMode ? "Navbar dark-mode" : "Navbar"}>
       <NavLink href="/" className="Logo">
