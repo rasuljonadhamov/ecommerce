@@ -1,0 +1,17 @@
+$light-bg: #fff;
+$dark-bg: #121212;
+$text-color: #333;
+$light-text-color: #fff;
+
+.ToggleDarkMode {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: $light-bg; // Light mode background
+  color: $text-color; // Light mode text
+
+  &.dark-mode {
+    background-color: $dark-bg; // Dark mode background
+    color: $light-text-color; // Dark mode text
+  }
+}

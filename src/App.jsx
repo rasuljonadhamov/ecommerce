@@ -4,6 +4,7 @@ import ProductListing from "./components/ProductListing/ProductListing";
 
 import "./index.scss";
 import SearchInput from "./components/SearchInput/SearchInput";
+import Navbar from "./components/Navbar/Navbar";
 
 const products = [
   {
@@ -43,6 +44,7 @@ function App() {
   const selectedProduct = products[0];
   return (
     <div>
+      <Navbar />
       <SearchInput value={searchTerm} onChange={(e) => handleSearch(e)} />
       <ProductListing products={products} />
       <ProductDetail product={selectedProduct} />
