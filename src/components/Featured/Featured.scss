@@ -1,5 +1,6 @@
 .featured-products {
   background-color: #fff;
+  margin-top: 50px;
 
   &.dark-mode {
     background-color: #333;
@@ -39,6 +40,7 @@
   -moz-box-shadow: 7px 11px 7px 0px rgba (34, 60, 80, 0.2);
   box-shadow: 7px 11px 7px 0px rgba (34, 60, 80, 0.2);
   padding: 25px 0;
+  margin-bottom: 150px;
 
   &.dark-mode {
     background-color: #333;

@@ -1,60 +1,71 @@
 import { useState } from "react";
-import NavLink from "../NavLink/NavLink";
 import { RxSun } from "react-icons/rx";
 import { FaRegMoon } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 
 import "./Navbar.scss";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   return (
-    <div className={isDarkMode ? "Navbar dark-mode" : "Navbar"}>
-      <NavLink href="/" className="Logo">
-        C
-      </NavLink>
-      <nav>
-        <NavLink isDarkMode={isDarkMode} href="/">
-          Home
-        </NavLink>
-        <NavLink isDarkMode={isDarkMode} href="/about">
-          About
-        </NavLink>
-        <NavLink isDarkMode={isDarkMode} href="/products">
-          Products
-        </NavLink>
-        <NavLink isDarkMode={isDarkMode} href="/cart">
-          Cart
-        </NavLink>
-      </nav>
-      <div className="right-side">
-        {isDarkMode ? (
-          <RxSun
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            color={isDarkMode ? "white" : "currentColor"}
-          />
-        ) : (
-          <FaRegMoon
-            color={isDarkMode ? "white" : "currentColor"}
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            isDarkMode={isDarkMode}
-          />
-        )}
-        <NavLink href="/cart" className="cart-icon">
+    <div className="navbar-container">
+      <div className={isDarkMode ? "Navbar dark-mode" : "Navbar"}>
+        <Link to="/" className="Logo">
+          C
+        </Link>
+        <nav>
+          <Link className={isDarkMode ? "NavLink dark-mode" : "NavLink"} to="/">
+            Home
+          </Link>
+          <Link
+            className={isDarkMode ? "NavLink dark-mode" : "NavLink"}
+            to="/about"
+          >
+            About
+          </Link>
+          <Link
+            className={isDarkMode ? "NavLink dark-mode" : "NavLink"}
+            to="/products"
+          >
+            Products
+          </Link>
+          <Link
+            className={isDarkMode ? "NavLink dark-mode" : "NavLink"}
+            to="/cart"
+          >
+            Cart
+          </Link>
+        </nav>
+        <div className="right-side">
           {isDarkMode ? (
-            <FaCartShopping
+            <RxSun
               onClick={() => setIsDarkMode(!isDarkMode)}
               color={isDarkMode ? "white" : "currentColor"}
             />
           ) : (
-            <FaShoppingCart
+            <FaRegMoon
               color={isDarkMode ? "white" : "currentColor"}
               onClick={() => setIsDarkMode(!isDarkMode)}
               isDarkMode={isDarkMode}
             />
           )}
-          <span className="cart-count">0</span>
-        </NavLink>
+          <Link to="/cart" className="cart-icon">
+            {isDarkMode ? (
+              <FaCartShopping
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                color={isDarkMode ? "white" : "currentColor"}
+              />
+            ) : (
+              <FaShoppingCart
+                color={isDarkMode ? "white" : "currentColor"}
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                isDarkMode={isDarkMode}
+              />
+            )}
+            <span className="cart-count">0</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

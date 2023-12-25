@@ -50,8 +50,8 @@ function App() {
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <Hero isDarkMode={isDarkMode} />
       <Featured isDarkMode={isDarkMode} />
-      <ProductListing products={products} />
-      <ProductDetail product={selectedProduct} />
+      {/* <ProductListing products={products} />
+      <ProductDetail product={selectedProduct} /> */}
     </div>
   );
 }
