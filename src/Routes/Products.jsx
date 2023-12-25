@@ -1,4 +1,5 @@
-import ProductListing from '../components/ProductListing/ProductListing'
+import { useEffect, useState } from "react";
+import ProductListing from "../components/ProductListing/ProductListing";
 
 const products = [
   {
@@ -20,12 +21,23 @@ const products = [
     image: "https://via.placeholder.com/300",
   },
 ];
-const Products = () => {
+const Products = ({ isDarkMode }) => {
+  const [data, setDate] = useState([]);
+
+  useEffect(() => {
+    fetch("https://strapi-store-server.onrender.com/api/products")
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json.data);
+        setDate(json.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div>
-      <ProductListing products={products}/>
+      <ProductListing isDarkMode={isDarkMode} products={data} key={data.id} />
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { RxSun } from "react-icons/rx";
 import { FaRegMoon } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
@@ -6,8 +6,11 @@ import { FaShoppingCart } from "react-icons/fa";
 
 import "./Navbar.scss";
 import { Link, Outlet } from "react-router-dom";
+import { CartContext } from "../../Contexts/CartContext";
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+  const { cartItems } = useContext(CartContext);
+
   return (
     <div className="wrap">
       <div className={isDarkMode ? "auth-wrapper dark-mode" : "auth-wrapper"}>
@@ -84,7 +87,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
                   isDarkMode={isDarkMode}
                 />
               )}
-              <span className="cart-count">0</span>
+              <span className="cart-count">{cartItems.length}</span>
             </Link>
           </div>
         </div>

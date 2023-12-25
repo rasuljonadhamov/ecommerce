@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 function Hero(props) {
   const { isDarkMode } = props;
-  console.log(isDarkMode);
   const images = [
     "https://react-vite-comfy-store-v2.netlify.app/assets/hero2-2271e3ad.webp",
     "https://react-vite-comfy-store-v2.netlify.app/assets/hero3-a83f0357.webp",
