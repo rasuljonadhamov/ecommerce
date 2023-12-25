@@ -5,7 +5,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 
 import "./Navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   return (
@@ -67,6 +67,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           </Link>
         </div>
       </div>
+      <Outlet />
     </div>
   );
 };

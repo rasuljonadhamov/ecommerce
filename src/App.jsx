@@ -1,57 +1,41 @@
 import { useState } from "react";
-import ProductDetail from "./components/ProductDetail/ProductDetail";
-import ProductListing from "./components/ProductListing/ProductListing";
-
 import "./index.scss";
-import SearchInput from "./components/SearchInput/SearchInput";
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import Featured from "./components/Featured/Featured";
-
-const products = [
-  {
-    id: 1,
-    name: "Product 1",
-    price: "$19.99",
-    image: "https://via.placeholder.com/300",
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    price: "$24.99",
-    image: "https://via.placeholder.com/300",
-  },
-  {
-    id: 3,
-    name: "Product 3",
-    price: "$14.99",
-    image: "https://via.placeholder.com/300",
-  },
-];
+import { Route, Routes } from "react-router-dom";
+import Home from "./Routes/Home";
+import About from "./Routes/About";
+import Products from "./Routes/Products";
+import Cart from "./Routes/Cart";
 
 function App() {
-  const [filteredProducts, setFilteredProducts] = useState(products);
-  const [searchTerm, setSearchTerm] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const handleSearch = (term) => {
-    setSearchTerm(term.target.value);
-    console.log(searchTerm);
-    const filtered = products.filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredProducts(filtered);
-    console.log(filteredProducts);
-  };
-
-  const selectedProduct = products[0];
   return (
     <div>
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <Hero isDarkMode={isDarkMode} />
-      <Featured isDarkMode={isDarkMode} />
-      {/* <ProductListing products={products} />
-      <ProductDetail product={selectedProduct} /> */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+          }
+        >
+          <Route
+            index
+            element={
+              <Home isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+            }
+          />
+
+          <Route element={<About isDarkMode={isDarkMode} />} path="about" />
+
+          <Route
+            element={<Products isDarkMode={isDarkMode} />}
+            path="products"
+          />
+
+          <Route element={<Cart isDarkMode={isDarkMode} />} path="cart" />
+        </Route>
+      </Routes>
     </div>
   );
 }
