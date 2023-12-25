@@ -1,0 +1,22 @@
+.shopping-cart {
+  background-color: #fff;
+  height: 100vh;
+  padding: 50px;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+.shopping-cart.dark-mode {
+  background-color: #222;
+  color: #fff;
+
+  .shopping-cart__title {
+    color: #ccc;
+  }
+
+  .product-detail__price {
+    color: red;
+  }
+}

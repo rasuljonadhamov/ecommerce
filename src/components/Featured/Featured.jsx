@@ -4,7 +4,7 @@ const Featured = ({ isDarkMode }) => {
   function Card({ imageUrl, title, price }) {
     return (
       <div className={`card ${isDarkMode ? "dark-mode" : ""}`}>
-        <img src={imageUrl} alt={title} />
+        <img src={imageUrl} alt={title} className="cards-image" />
         <p className="card-title">{title}</p>
         <p className="card-price">{price}</p>
       </div>
@@ -13,19 +13,22 @@ const Featured = ({ isDarkMode }) => {
 
   const cards = [
     {
-      imageUrl: "your-image-url-1.jpg",
-      title: "Product 1",
-      price: "$19.99",
+      imageUrl:
+        "https://images.pexels.com/photos/943150/pexels-photo-943150.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      title: "Avant-Garde Lamp",
+      price: "$179.99",
     },
     {
-      imageUrl: "your-image-url-2.jpg",
-      title: "Product 2",
-      price: "$29.99",
+      imageUrl:
+        "https://images.pexels.com/photos/3679601/pexels-photo-3679601.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Coffe Table",
+      price: "$179.99",
     },
     {
-      imageUrl: "your-image-url-3.jpg",
-      title: "Product 3",
-      price: "$39.99",
+      imageUrl:
+        "https://images.pexels.com/photos/1034584/pexels-photo-1034584.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      title: "Comfy Bad",
+      price: "$129.99",
     },
   ];
 

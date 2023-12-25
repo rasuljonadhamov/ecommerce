@@ -4,6 +4,8 @@
   padding: 2rem;
   border: 1px solid #ccc;
   margin-bottom: 20px;
+  list-style: none;
+  
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -45,4 +47,8 @@
 .product-detail__desc {
   font-size: 18px;
   margin-bottom: 30px;
+}
+
+.add__to--cart {
+  margin-top: 40px;
 }

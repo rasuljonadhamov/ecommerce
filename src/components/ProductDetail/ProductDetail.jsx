@@ -1,11 +1,20 @@
 import { useLocation } from "react-router-dom";
 import "./ProductDetail.scss";
+import { useContext } from "react";
+import { CartContext } from "../../Contexts/CartContext";
 
 const ProductDetail = ({ isDarkMode }) => {
   const { state } = useLocation();
   const {
     attributes: { title, image, price, company, description },
   } = state.product;
+
+  const { cartItems, setCartItems } = useContext(CartContext);
+
+  const addToCart = () => {
+    const newItem = { title, image, company, price, quantity: 1 };
+    setCartItems([...cartItems, newItem]);
+  };
 
   return (
     <div className="product-detail">
@@ -16,6 +25,9 @@ const ProductDetail = ({ isDarkMode }) => {
         <p className="product-detail__price"> ${price}</p>
         <p className="product-detail__desc">{description}</p>
         <span>Amount</span>
+        <div className="add__to--cart">
+          <button onClick={addToCart}>Add to Cart</button>
+        </div>
       </div>
     </div>
   );
