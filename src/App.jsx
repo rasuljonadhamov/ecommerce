@@ -6,6 +6,7 @@ import "./index.scss";
 import SearchInput from "./components/SearchInput/SearchInput";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
+import Featured from "./components/Featured/Featured";
 
 const products = [
   {
@@ -48,6 +49,7 @@ function App() {
     <div>
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <Hero isDarkMode={isDarkMode} />
+      <Featured isDarkMode={isDarkMode} />
       <ProductListing products={products} />
       <ProductDetail product={selectedProduct} />
     </div>

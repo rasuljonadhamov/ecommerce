@@ -19,7 +19,6 @@
     align-items: center;
   }
 
- 
   .right-side {
     display: flex;
     align-items: center;
@@ -38,6 +37,7 @@
 
   &.dark-mode {
     color: black;
+    background-color: #ff7ac6;
   }
 }
 
