@@ -44,8 +44,12 @@ function Hero(props) {
         <div className={styles["slider-container"]}>
           <Slider {...settings}>
             {images.map((imageUrl, index) => (
-              <div key={index}>
-                <img src={imageUrl} alt={`slide-${index}`} className="image" />
+              <div key={index} className={styles["slider-image-container"]}>
+                <img
+                  src={imageUrl}
+                  alt={`slide-${index}`}
+                  className={styles["image"]}
+                />
               </div>
             ))}
           </Slider>

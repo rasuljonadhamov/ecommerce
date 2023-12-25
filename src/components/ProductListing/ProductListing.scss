@@ -1,8 +1,8 @@
-// ProductListing.scss
-
 .product-listing {
   padding: 20px;
   height: 100vh;
+  text-align: center;
+  padding-left: 100px;
 
   &.dark-mode {
     background-color: #333;
@@ -12,7 +12,6 @@
   .dark-mode-toggle {
     cursor: pointer;
     padding: 10px;
-    text-align: center;
     background-color: #007bff;
     color: #fff;
     margin-bottom: 20px;
@@ -37,7 +36,10 @@
 
       img {
         width: 100%;
+        height: 60%;
+        object-fit: cover;
         border-radius: 5px;
+        margin-bottom: 20px;
       }
 
       .product-details {
@@ -49,6 +51,64 @@
         p {
           margin-top: 5px;
           color: #666;
+        }
+      }
+    }
+  }
+}
+
+
+.product-listing {
+  padding: 20px;
+
+  &.dark-mode {
+    background-color: #333;
+    color: white;
+  }
+
+  div {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+  }
+
+  .products-fil {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+
+    .product-item {
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+
+      img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .product-details {
+        h3 {
+          font-size: 1rem;
+          margin-bottom: 5px;
+        }
+
+        p {
+          font-weight: bold;
+          color: #333;
         }
       }
     }

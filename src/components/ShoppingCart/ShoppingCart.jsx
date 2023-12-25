@@ -27,7 +27,7 @@ const ShoppingCart = ({ isDarkMode }) => {
           </ul>
         </div>
       ) : (
-        <p>Your cart is empty.</p>
+        <h2>Your cart is empty.</h2>
       )}
     </div>
   );
