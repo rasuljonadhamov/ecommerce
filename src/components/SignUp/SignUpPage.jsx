@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./SignUpPage.scss";
 
 const SignUpPage = () => {
@@ -22,7 +23,9 @@ const SignUpPage = () => {
           <input type="password" id="password" name="password" />
         </div>
         <div className="form-group">
-          <button type="submit">Sign Up</button>
+          <button type="submit">
+            <Link to="/">Sign Up</Link>
+          </button>
         </div>
       </form>
     </div>

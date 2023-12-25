@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./SignInPage.scss"; // Import SCSS file for styling
 
 const SignInPage = () => {
@@ -18,7 +19,9 @@ const SignInPage = () => {
           <input type="password" id="password" name="password" />
         </div>
         <div className="form-group">
-          <button type="submit">Sign In</button>
+          <button type="submit">
+            <Link to="/"> Sign In</Link>
+          </button>
         </div>
       </form>
     </div>

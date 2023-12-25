@@ -103,3 +103,27 @@ $dark-hover-text-color: #ddd;
     }
   }
 }
+
+.auth-wrapper {
+  display: flex;
+  align-items: center;
+  padding-right: 40px;
+  justify-content: flex-end;
+  gap: 20px;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 10px;
+
+  &.dark-mode {
+    color: black;
+    background-color: #616161;
+  }
+
+  .links {
+    display: inline-block;
+
+    &.dark-mode {
+      background-color: #616161;
+    }
+  }
+}

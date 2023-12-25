@@ -3,9 +3,11 @@ import "./index.scss";
 import Navbar from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Routes/Home";
-import About from "./Routes/About";
+import AboutPage from "./Routes/About";
 import Products from "./Routes/Products";
 import Cart from "./Routes/Cart";
+import SignRoute from "./Routes/SignRoute";
+import SignUpRoute from "./Routes/SignUpRoute";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -26,7 +28,7 @@ function App() {
             }
           />
 
-          <Route element={<About isDarkMode={isDarkMode} />} path="about" />
+          <Route element={<AboutPage isDarkMode={isDarkMode} />} path="about" />
 
           <Route
             element={<Products isDarkMode={isDarkMode} />}
@@ -35,6 +37,8 @@ function App() {
 
           <Route element={<Cart isDarkMode={isDarkMode} />} path="cart" />
         </Route>
+        <Route path="/sign-in" element={<SignRoute />}></Route>
+        <Route path="/sign-up" element={<SignUpRoute />}></Route>
       </Routes>
     </div>
   );
