@@ -3,7 +3,12 @@ import { CartContext } from "../../Contexts/CartContext";
 import "./ShoppingCart.scss";
 
 const ShoppingCart = ({ isDarkMode }) => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setCartItems } = useContext(CartContext);
+
+  const removeFromCart = (id) => {
+    const updatedCart = cartItems.filter((item) => item.id !== id);
+    setCartItems(updatedCart);
+  };
 
   console.log(cartItems);
   return (
@@ -11,7 +16,7 @@ const ShoppingCart = ({ isDarkMode }) => {
       <h1>Shopping Card</h1>
       {cartItems.length > 0 ? (
         <div>
-          <ul className="product-detail">
+          <ul className="product-detail cart-wrapper">
             {cartItems.map((item) => (
               <li key={item.title}>
                 <img
@@ -22,6 +27,7 @@ const ShoppingCart = ({ isDarkMode }) => {
                 <h1 className="product-company__name">{item.title}</h1>
                 <h1 className="product-company__name">{item.company}</h1>
                 <p className="product-detail__price"> ${item.price} </p>
+                <button onClick={() => removeFromCart(item.id)}>Remove</button>
               </li>
             ))}
           </ul>

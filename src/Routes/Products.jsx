@@ -3,19 +3,26 @@ import ProductListing from "../components/ProductListing/ProductListing";
 
 const Products = ({ isDarkMode }) => {
   const [data, setDate] = useState([]);
+  const [json, setJson] = useState([]);
 
   useEffect(() => {
     fetch("https://strapi-store-server.onrender.com/api/products")
       .then((res) => res.json())
-      .then((json) => {
+      .then((jsonLoc) => {
         console.log(json);
-        setDate(json.data);
+        setDate(jsonLoc.data);
+        setJson(jsonLoc);
       })
       .catch((err) => console.log(err));
   }, []);
   return (
     <div>
-      <ProductListing isDarkMode={isDarkMode} products={data} key={data.id} />
+      <ProductListing
+        isDarkMode={isDarkMode}
+        products={data}
+        key={data.id}
+        json={json}
+      />
     </div>
   );
 };

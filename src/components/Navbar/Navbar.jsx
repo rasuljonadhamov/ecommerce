@@ -32,7 +32,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
       </div>
       <div className="navbar-container">
         <div className={isDarkMode ? "Navbar dark-mode" : "Navbar"}>
-          <Link to="/" className="Logo">
+          <Link to="/" className={isDarkMode ? "Logo dark-mode" : "Logo"}>
             C
           </Link>
           <nav>
@@ -76,16 +76,9 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             )}
             <Link to="/cart" className="cart-icon">
               {isDarkMode ? (
-                <FaCartShopping
-                  onClick={() => setIsDarkMode(!isDarkMode)}
-                  color={isDarkMode ? "white" : "currentColor"}
-                />
+                <FaCartShopping color={isDarkMode ? "white" : "currentColor"} />
               ) : (
-                <FaShoppingCart
-                  color={isDarkMode ? "white" : "currentColor"}
-                  onClick={() => setIsDarkMode(!isDarkMode)}
-                  isDarkMode={isDarkMode}
-                />
+                <FaShoppingCart color={isDarkMode ? "white" : "currentColor"} />
               )}
               <span className="cart-count">{cartItems.length}</span>
             </Link>

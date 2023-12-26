@@ -6,6 +6,12 @@
   h1 {
     margin-bottom: 20px;
   }
+
+  .product-detail {
+    flex-wrap: wrap;
+    border: none;
+    text-align: center;
+  }
 }
 
 .shopping-cart.dark-mode {
