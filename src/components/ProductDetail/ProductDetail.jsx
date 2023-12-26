@@ -9,6 +9,8 @@ const ProductDetail = ({ isDarkMode }) => {
     attributes: { title, image, price, company, description },
   } = state.product;
 
+  console.log(12, state.product);
+
   const { cartItems, setCartItems } = useContext(CartContext);
 
   const addToCart = () => {

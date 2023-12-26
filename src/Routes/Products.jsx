@@ -9,7 +9,6 @@ const Products = ({ isDarkMode }) => {
     fetch("https://strapi-store-server.onrender.com/api/products")
       .then((res) => res.json())
       .then((jsonLoc) => {
-        console.log(json);
         setDate(jsonLoc.data);
         setJson(jsonLoc);
       })

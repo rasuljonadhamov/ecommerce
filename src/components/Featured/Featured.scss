@@ -63,3 +63,29 @@
 .cards-image {
   width: 250px;
 }
+
+.card-wrapper {
+  // width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .card-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+
+    .product-details {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+  }
+
+  img {
+    width: 300px;
+    object-fit: cover;
+  }
+}

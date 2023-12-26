@@ -9,6 +9,7 @@ import Cart from "./Routes/Cart";
 import SignRoute from "./Routes/SignRoute";
 import SignUpRoute from "./Routes/SignUpRoute";
 import Details from "./Routes/Details";
+import SignInPage from "./components/SignInPage/SignInPage";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -42,7 +43,7 @@ function App() {
             path="productDetails"
           />
         </Route>
-        <Route path="/sign-in" element={<SignRoute />}></Route>
+        <Route path="/sign-in" element={<SignInPage />}></Route>
         <Route path="/sign-up" element={<SignUpRoute />}></Route>
       </Routes>
     </div>
