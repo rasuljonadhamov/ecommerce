@@ -6,10 +6,8 @@ import Home from "./Routes/Home";
 import AboutPage from "./Routes/About";
 import Products from "./Routes/Products";
 import Cart from "./Routes/Cart";
-import SignRoute from "./Routes/SignRoute";
-import SignUpRoute from "./Routes/SignUpRoute";
 import Details from "./Routes/Details";
-import SignInPage from "./components/SignInPage/SignInPage";
+import Authentication from "./Routes/Authentication";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -36,6 +34,7 @@ function App() {
             element={<Products isDarkMode={isDarkMode} />}
             path="products"
           />
+          <Route path="auth" element={<Authentication />}></Route>
 
           <Route element={<Cart isDarkMode={isDarkMode} />} path="cart" />
           <Route
@@ -43,8 +42,6 @@ function App() {
             path="productDetails"
           />
         </Route>
-        <Route path="/sign-in" element={<SignInPage />}></Route>
-        <Route path="/sign-up" element={<SignUpRoute />}></Route>
       </Routes>
     </div>
   );

@@ -3,30 +3,34 @@ import { RxSun } from "react-icons/rx";
 import { FaRegMoon } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
+import { signOutUser } from "../../Utilities/Firebase";
 
 import "./Navbar.scss";
 import { Link, Outlet } from "react-router-dom";
 import { CartContext } from "../../Contexts/CartContext";
+import { UserContext } from "../../Contexts/user.contexts";
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const { cartItems } = useContext(CartContext);
+  const { currentUser } = useContext(UserContext);
 
   return (
     <div className="wrap">
       <div className={isDarkMode ? "auth-wrapper dark-mode" : "auth-wrapper"}>
-        <Link
-          to="/sign-in"
-          className={isDarkMode ? "links dark-mode" : "links"}
-        >
-          Sign In
-        </Link>
+        
+        {currentUser ? (
+          <span className="nav-link" onClick={signOutUser}>
+            SIGN OUT
+          </span>
+        ) : (
+          <Link to="/auth" className={isDarkMode ? "links dark-mode" : "links"}>
+            SIGN IN
+          </Link>
+        )}
         <Link to="/" className={isDarkMode ? "links dark-mode" : "links"}>
           Guest
         </Link>
-        <Link
-          to="/sign-up"
-          className={isDarkMode ? "links dark-mode" : "links"}
-        >
+        <Link to="/auth" className={isDarkMode ? "links dark-mode" : "links"}>
           Create Account
         </Link>
       </div>
