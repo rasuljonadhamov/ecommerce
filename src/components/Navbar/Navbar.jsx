@@ -17,11 +17,13 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   return (
     <div className="wrap">
       <div className={isDarkMode ? "auth-wrapper dark-mode" : "auth-wrapper"}>
-        
         {currentUser ? (
-          <span className="nav-link" onClick={signOutUser}>
+          <Link
+            className={isDarkMode ? "links dark-mode" : "links"}
+            onClick={signOutUser}
+          >
             SIGN OUT
-          </span>
+          </Link>
         ) : (
           <Link to="/auth" className={isDarkMode ? "links dark-mode" : "links"}>
             SIGN IN
