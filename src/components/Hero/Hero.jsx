@@ -23,36 +23,44 @@ function Hero(props) {
 
   return (
     <div
-      className={`${styles["hero-container"]} ${
-        isDarkMode ? styles["dark-mode"] : styles["."]
+      className={`${styles["hero__content"]} ${
+        isDarkMode
+          ? styles["dark-mode container"]
+          : styles["container hero__content"]
       }`}
     >
-      <div className={styles["left-side"]}>
-        <h1 className={styles["hero-title"]}>
-          We are changing the way people shop
-        </h1>
-        <p className={styles["hero-desc"]}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
-          repellat explicabo enim soluta temporibus asperiores aut obcaecati
-          perferendis porro nobis.
-        </p>
-        <Link to="/products" className={styles["link"]}>
-          Our Products
-        </Link>
-      </div>
-      <div className={styles["right-side"]}>
-        <div className={styles["slider-container"]}>
-          <Slider {...settings}>
-            {images.map((imageUrl, index) => (
-              <Link key={index} className={styles["slider-image-container"]}>
-                <img
-                  src={imageUrl}
-                  alt={`slide-${index}`}
-                  className={styles["image"]}
-                />
-              </Link>
-            ))}
-          </Slider>
+      <div
+        className={`${styles["hero-container"]} ${
+          isDarkMode ? styles["dark-mode"] : styles["."]
+        }`}
+      >
+        <div className={styles["left-side"]}>
+          <h1 className={styles["hero-title"]}>
+            We are changing the way people shop
+          </h1>
+          <p className={styles["hero-desc"]}>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore
+            repellat explicabo enim soluta temporibus asperiores aut obcaecati
+            perferendis porro nobis.
+          </p>
+          <Link to="/products" className={styles["link"]}>
+            Our Products
+          </Link>
+        </div>
+        <div className={styles["right-side"]}>
+          <div className={styles["slider-container"]}>
+            <Slider {...settings}>
+              {images.map((imageUrl, index) => (
+                <Link key={index} className={styles["slider-image-container"]}>
+                  <img
+                    src={imageUrl}
+                    alt={`slide-${index}`}
+                    className={styles["image"]}
+                  />
+                </Link>
+              ))}
+            </Slider>
+          </div>
         </div>
       </div>
     </div>

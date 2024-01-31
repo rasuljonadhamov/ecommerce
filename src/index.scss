@@ -26,3 +26,15 @@ button {
   padding: 0 30px;
   margin: 0 auto;
 }
+
+.products__content {
+  background-color: #fff;
+
+  &.dark-mode {
+    background-color: #333;
+  }
+}
+
+.product-item {
+  height: 300px;
+}

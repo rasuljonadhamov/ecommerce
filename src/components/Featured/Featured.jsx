@@ -64,20 +64,28 @@ const Featured = ({ isDarkMode }) => {
   return (
     <div
       className={
-        isDarkMode ? "featured-products dark-mode" : "featured-products"
+        isDarkMode ? "featured__content dark-mode" : "featured__content"
       }
     >
-      <h1>Featured Products</h1>
-      <hr />
+      <div
+        className={
+          isDarkMode
+            ? "featured-products container dark-mode"
+            : "featured-products container"
+        }
+      >
+        <h1>Featured Products</h1>
+        <hr />
 
-      <div className="card-image-container">
-        <div className="card-wrapper">
-          {data &&
-            data.map((productt, index) => (
-              <div className="card-wrap" key={index}>
-                <ProductItem key={index} product={productt} />
-              </div>
-            ))}
+        <div className="card-image-container">
+          <div className="card-wrapper">
+            {data &&
+              data.map((productt, index) => (
+                <div className="card-wrap" key={index}>
+                  <ProductItem key={index} product={productt} />
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </div>

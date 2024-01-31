@@ -15,13 +15,20 @@ const Products = ({ isDarkMode }) => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div>
-      <ProductListing
-        isDarkMode={isDarkMode}
-        products={data}
-        key={data.id}
-        json={json}
-      />
+    <div
+      className={
+        isDarkMode ? " dark-mode products__content" : "  products__content"
+      }
+    >
+      <div className="container">
+        
+        <ProductListing
+          isDarkMode={isDarkMode}
+          products={data}
+          key={data.id}
+          json={json}
+        />
+      </div>
     </div>
   );
 };

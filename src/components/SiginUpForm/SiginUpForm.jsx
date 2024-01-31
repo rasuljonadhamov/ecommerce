@@ -46,12 +46,6 @@ function SignUpForm() {
   };
 
   const registerUser = async () => {
-    // const userData = {
-    //   username: displayName,
-    //   email: email,
-    //   password: password,
-    // };
-
     try {
       let raw = `{ "username":${displayName},"email":${email},"password":${password}}`;
 
@@ -68,8 +62,6 @@ function SignUpForm() {
         .then((response) => console.log(response))
         .then((result) => console.log(result))
         .catch((error) => console.log("error", error));
-
-      
     } catch (error) {
       console.error("Error registering user:", error);
       throw error;

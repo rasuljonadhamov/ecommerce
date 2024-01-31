@@ -1,4 +1,6 @@
 .navbar-container {
+  background-color: rgb(240, 246, 255);
+
   &.dark-mode {
     background-color: rgb(24, 25, 32);
   }
@@ -87,6 +89,7 @@ $dark-hover-text-color: #ddd;
   padding: 10px 15px;
   text-decoration: none;
   color: $text-color;
+  cursor: pointer;
   &:hover,
   &.active {
     background-color: $light-hover-bg;
@@ -101,6 +104,16 @@ $dark-hover-text-color: #ddd;
       background-color: $dark-hover-bg;
       color: $dark-hover-text-color;
     }
+  }
+}
+
+.top__side {
+  background-color: #1a1a1a;
+  color: #fff;
+
+  &.dark-mode {
+    color: black;
+    background-color: #616161;
   }
 }
 

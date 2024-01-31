@@ -6,7 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 // import { signOutUser } from "../../Utilities/Firebase";
 
 import "./Navbar.scss";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { CartContext } from "../../Contexts/CartContext";
 import { UserContext } from "../../Contexts/user.contexts";
 
@@ -16,60 +16,81 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
   return (
     <div className="wrap">
-      <div className={isDarkMode ? "auth-wrapper dark-mode" : "auth-wrapper"}>
-        {currentUser ? (
-          <Link
+      <div className={isDarkMode ? "top__side dark-mode" : "top__side"}>
+        <div
+          className={
+            isDarkMode
+              ? "auth-wrapper dark-mode container"
+              : "auth-wrapper container"
+          }
+        >
+          {currentUser ? (
+            <NavLink
+              className={isDarkMode ? "links dark-mode" : "links"}
+              onClick={() => {
+                //  signOutUser
+                console.log("dw");
+              }}
+            >
+              SIGN OUT
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/auth"
+              className={isDarkMode ? "links dark-mode" : "links"}
+            >
+              SIGN IN
+            </NavLink>
+          )}
+          <NavLink to="/" className={isDarkMode ? "links dark-mode" : "links"}>
+            Guest
+          </NavLink>
+          <NavLink
+            to="/auth"
             className={isDarkMode ? "links dark-mode" : "links"}
-            onClick={ () => {
-              //  signOutUser
-              console.log("dw"); 
-              }
-              }
           >
-            SIGN OUT
-          </Link>
-        ) : (
-          <Link to="/auth" className={isDarkMode ? "links dark-mode" : "links"}>
-            SIGN IN
-          </Link>
-        )}
-        <Link to="/" className={isDarkMode ? "links dark-mode" : "links"}>
-          Guest
-        </Link>
-        <Link to="/auth" className={isDarkMode ? "links dark-mode" : "links"}>
-          Create Account
-        </Link>
+            Create Account
+          </NavLink>
+        </div>
       </div>
-      <div className="navbar-container">
-        <div className={isDarkMode ? "Navbar dark-mode" : "Navbar"}>
-          <Link to="/" className={isDarkMode ? "Logo dark-mode" : "Logo"}>
+      <div
+        className={
+          isDarkMode ? " dark-mode navbar-container" : "navbar-container "
+        }
+      >
+        <div
+          className={
+            isDarkMode ? "Navbar dark-mode container" : "Navbar container"
+          }
+        >
+          <NavLink to="/" className={isDarkMode ? "Logo dark-mode" : "Logo"}>
             C
-          </Link>
+          </NavLink>
           <nav>
-            <Link
+            <NavLink
               className={isDarkMode ? "NavLink dark-mode" : "NavLink"}
               to="/"
             >
               Home
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               className={isDarkMode ? "NavLink dark-mode" : "NavLink"}
               to="/about"
             >
               About
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               className={isDarkMode ? "NavLink dark-mode" : "NavLink"}
               to="/products"
             >
               Products
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               className={isDarkMode ? "NavLink dark-mode" : "NavLink"}
               to="/cart"
             >
               Cart
-            </Link>
+            </NavLink>
           </nav>
           <div className="right-side">
             {isDarkMode ? (
