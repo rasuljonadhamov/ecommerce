@@ -1,11 +1,6 @@
 import { useState } from "react";
 import "./SiginInForm.scss";
 
-import {
-  signInWithGooglePopup,
-  creteUserDocumentFromAuth,
-  signInAuthUserWithEmailAndPassword,
-} from "../../Utilities/Firebase";
 import Button from "../buttons/Button";
 import FormInput from "../form-input/FormInput";
 
@@ -19,7 +14,6 @@ function SignInForm() {
   const { email, password } = formFields;
 
   const handleChange = (e) => {
-    console.log(formFields);
     const { name, value } = e.target;
     setFormField({ ...formFields, [name]: value });
   };
@@ -28,20 +22,43 @@ function SignInForm() {
     setFormField(defoultFormFields);
   };
 
-  const signInWithGoogle = async () => {
-     await signInWithGooglePopup();
-
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      console.log(user);
+      console.log(email, password);
+
+      e.preventDefault();
+
+      if (email.length < 4) {
+        alert("Email should be at least 5 character");
+        return;
+      }
+
+      if (password.length < 4) {
+        alert("Pasword should be at least 5 character");
+        return;
+      }
+
+      fetch("https://strapi-store-server.onrender.com/api/auth/local", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          identifier: email,
+          password: password,
+        }),
+      })
+        .then((res) => {
+          console.log(res);
+          res.json();
+        })
+        .then((json) => {
+          console.log(json);
+        })
+        .catch((err) => alert(err));
+
       resetForm();
     } catch (error) {
       switch (error.code) {
@@ -85,9 +102,6 @@ function SignInForm() {
 
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
-            Google Sign In
-          </Button>
         </div>
       </form>
     </div>

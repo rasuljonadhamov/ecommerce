@@ -1,9 +1,5 @@
 import { useState } from "react";
 
-import {
-  createAuthUserWithEmailAndPassword,
-  creteUserDocumentFromAuth,
-} from "../../Utilities/Firebase";
 import Button from "../buttons/Button";
 import FormInput from "../form-input/FormInput";
 
@@ -32,24 +28,51 @@ function SignUpForm() {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Password do not match with Confirmpassword0");
+      alert("Password does not match with Confirm password");
       return;
     }
 
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await registerUser();
 
-      await creteUserDocumentFromAuth(user, { displayName });
       resetForm();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Email already in use");
       } else {
-        console.log(error);
+        console.error(error);
       }
+    }
+  };
+
+  const registerUser = async () => {
+    // const userData = {
+    //   username: displayName,
+    //   email: email,
+    //   password: password,
+    // };
+
+    try {
+      let raw = `{ "username":${displayName},"email":${email},"password":${password}}`;
+
+      let requestOptions = {
+        method: "POST",
+        body: raw,
+        redirect: "follow",
+      };
+
+      await fetch(
+        "https://strapi-store-server.onrender.com/api/auth/local/register",
+        requestOptions
+      )
+        .then((response) => console.log(response))
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
+
+      
+    } catch (error) {
+      console.error("Error registering user:", error);
+      throw error;
     }
   };
 
