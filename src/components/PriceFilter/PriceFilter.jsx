@@ -1,3 +1,5 @@
+import { Button } from "antd";
+
 const PriceFilter = ({ priceQuery, setPriceQuery, handlePriceFilter }) => {
   return (
     <div className="search-wrapper">
@@ -6,10 +8,13 @@ const PriceFilter = ({ priceQuery, setPriceQuery, handlePriceFilter }) => {
         type="range"
         min="0"
         max="1000"
+        style={{ width: 180, marginRight: 10 }}
         value={priceQuery}
         onChange={(e) => setPriceQuery(e.target.value)}
       />
-      <button onClick={handlePriceFilter}>Apply</button>
+      <Button onClick={handlePriceFilter} type="primary">
+        Apply
+      </Button>
     </div>
   );
 };

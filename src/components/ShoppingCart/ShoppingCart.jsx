@@ -1,13 +1,26 @@
 import { useContext } from "react";
 import { CartContext } from "../../Contexts/CartContext";
 import "./ShoppingCart.scss";
+import { Button } from "antd";
 
 const ShoppingCart = ({ isDarkMode }) => {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, setCartItems, setItemQuantities } =
+    useContext(CartContext);
+
+  // const removeFromCart = (id) => {
+  //   const updatedCart = cartItems.filter((item) => item.id !== id);
+  //   setCartItems(updatedCart);
+  // };
 
   const removeFromCart = (id) => {
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
+    // Also update the quantity state when removing an item
+    setItemQuantities((prevQuantities) => {
+      const updatedQuantities = { ...prevQuantities };
+      delete updatedQuantities[id];
+      return updatedQuantities;
+    });
   };
 
   console.log(cartItems);
@@ -18,16 +31,21 @@ const ShoppingCart = ({ isDarkMode }) => {
         <div>
           <ul className="product-detail cart-wrapper">
             {cartItems.map((item) => (
-              <li key={item.title}>
+              <li key={item.title} className="one__product">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="product-detail__image"
+                  className="product-detail__image cart__image"
                 />
                 <h1 className="product-company__name">{item.title}</h1>
                 <h1 className="product-company__name">{item.company}</h1>
                 <p className="product-detail__price"> ${item.price} </p>
-                <button onClick={() => removeFromCart(item.id)}>Remove</button>
+                <p className="product-detail__quantity">
+                  Quantity: {item.quantity}
+                </p>
+                <Button type="primary" onClick={() => removeFromCart(item.id)}>
+                  Remove
+                </Button>
               </li>
             ))}
           </ul>

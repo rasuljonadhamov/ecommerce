@@ -30,6 +30,7 @@
   .right-side {
     display: flex;
     align-items: center;
+    cursor: pointer;
     gap: 10px;
   }
 }
@@ -90,6 +91,8 @@ $dark-hover-text-color: #ddd;
   text-decoration: none;
   color: $text-color;
   cursor: pointer;
+  margin-right: 5px;
+  border-radius: 5px;
   &:hover,
   &.active {
     background-color: $light-hover-bg;

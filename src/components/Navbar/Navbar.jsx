@@ -14,6 +14,11 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const { cartItems } = useContext(CartContext);
   const { currentUser } = useContext(UserContext);
 
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <div className="wrap">
       <div className={isDarkMode ? "top__side dark-mode" : "top__side"}>
@@ -111,7 +116,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
               ) : (
                 <FaShoppingCart color={isDarkMode ? "white" : "currentColor"} />
               )}
-              <span className="cart-count">{cartItems.length}</span>
+              <span className="cart-count">{totalQuantity}</span>
             </Link>
           </div>
         </div>
