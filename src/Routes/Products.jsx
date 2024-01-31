@@ -21,7 +21,6 @@ const Products = ({ isDarkMode }) => {
       }
     >
       <div className="container">
-        
         <ProductListing
           isDarkMode={isDarkMode}
           products={data}
