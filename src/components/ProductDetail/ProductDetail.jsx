@@ -19,7 +19,7 @@ const ProductDetail = ({ isDarkMode }) => {
   };
 
   return (
-    <div className="product-detail">
+    <div className="product-detail container">
       <img src={image} alt={title} className="product-detail__image" />
       <div className="products-info">
         <h1 className="product-detail__title">{title}</h1>

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./SiginInForm.scss";
-
+import { useNavigate } from "react-router-dom";
 import Button from "../buttons/Button";
 import FormInput from "../form-input/FormInput";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../Utilities/Firebase";
+import { message } from "antd";
+import { UserContext } from "../../Contexts/user.contexts";
 
 const defoultFormFields = {
   email: "",
@@ -12,6 +16,8 @@ const defoultFormFields = {
 function SignInForm() {
   const [formFields, setFormField] = useState(defoultFormFields);
   const { email, password } = formFields;
+  const navigate = useNavigate();
+  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,25 +46,20 @@ function SignInForm() {
         return;
       }
 
-      fetch("https://strapi-store-server.onrender.com/api/auth/local", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          identifier: email,
-          password: password,
-        }),
-      })
-        .then((res) => {
-          console.log(res);
-          res.json();
-        })
-        .then((json) => {
-          console.log(json);
+      const signInUser = signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          setCurrentUser(user);
+          if (user.accessToken) {
+            sessionStorage.setItem("accessToken", user.accessToken);
+            message.success("User sign in successfully");
+            navigate("/");
+          }
         })
         .catch((err) => alert(err));
 
+      signInUser();
       resetForm();
     } catch (error) {
       switch (error.code) {

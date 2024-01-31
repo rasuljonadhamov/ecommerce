@@ -12,12 +12,18 @@ import { UserContext } from "../../Contexts/user.contexts";
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const { cartItems } = useContext(CartContext);
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+  console.log(currentUser);
 
   const totalQuantity = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
   );
+
+  const handleSignOut = () => {
+    sessionStorage.removeItem("accessToken");
+    setCurrentUser(null);
+  };
 
   return (
     <div className="wrap">
@@ -32,10 +38,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           {currentUser ? (
             <NavLink
               className={isDarkMode ? "links dark-mode" : "links"}
-              onClick={() => {
-                //  signOutUser
-                console.log("dw");
-              }}
+              onClick={handleSignOut}
             >
               SIGN OUT
             </NavLink>

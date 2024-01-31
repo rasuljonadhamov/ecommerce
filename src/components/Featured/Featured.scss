@@ -28,6 +28,7 @@
 
 .card-image-container {
   position: relative;
+  margin-bottom: 300px;
 }
 
 .card-wrapper {
@@ -94,7 +95,7 @@
   }
 
   img {
-    width: 300px;
+    height: 400px;
     object-fit: cover;
   }
 }

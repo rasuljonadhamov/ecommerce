@@ -1,7 +1,10 @@
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import Button from "../buttons/Button";
 import FormInput from "../form-input/FormInput";
+import { auth } from "../../Utilities/Firebase";
+import { message } from "antd";
+import { UserContext } from "../../Contexts/user.contexts";
 
 const defoultFormFields = {
   displayName: "",
@@ -12,12 +15,43 @@ const defoultFormFields = {
 
 function SignUpForm() {
   const [formFields, setFormField] = useState(defoultFormFields);
+  const [errors, setErrors] = useState({});
   const { displayName, email, password, confirmPassword } = formFields;
+
+  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (e) => {
     console.log(formFields);
     const { name, value } = e.target;
     setFormField({ ...formFields, [name]: value });
+  };
+
+  const validateForm = () => {
+    const validationErrors = {};
+
+    if (!displayName) {
+      validationErrors.displayName = "Display name is required";
+    }
+
+    if (!email) {
+      validationErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      validationErrors.email = "Invalid email format";
+    }
+
+    if (password !== confirmPassword) {
+      alert("Password does not match with Confirm password");
+      return;
+    }
+
+    if (!confirmPassword) {
+      validationErrors.confirmPassword = "Confirm password is required";
+    } else if (password !== confirmPassword) {
+      validationErrors.confirmPassword = "Passwords do not match";
+    }
+
+    setErrors(validationErrors);
+    return Object.keys(validationErrors).length === 0;
   };
 
   const resetForm = () => {
@@ -27,44 +61,33 @@ function SignUpForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      alert("Password does not match with Confirm password");
-      return;
+    if (!validateForm()) {
+      return message.error("Pleace validete form correctly");
     }
 
     try {
-      await registerUser();
+      const registerUser = async () => {
+        createUserWithEmailAndPassword(auth, email, password).then(
+          (userCredential) => {
+            console.log(userCredential);
+            const user = userCredential.user;
+            setCurrentUser(user);
+            message.success("User sign up successfully");
+            message.info("Pleace fill out sign in also");
+            console.log(user);
+          }
+        );
+      };
+
+      registerUser();
 
       resetForm();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Email already in use");
       } else {
-        console.error(error);
+        message.info("Error uccured during sign up");
       }
-    }
-  };
-
-  const registerUser = async () => {
-    try {
-      let raw = `{ "username":${displayName},"email":${email},"password":${password}}`;
-
-      let requestOptions = {
-        method: "POST",
-        body: raw,
-        redirect: "follow",
-      };
-
-      await fetch(
-        "https://strapi-store-server.onrender.com/api/auth/local/register",
-        requestOptions
-      )
-        .then((response) => console.log(response))
-        .then((result) => console.log(result))
-        .catch((error) => console.log("error", error));
-    } catch (error) {
-      console.error("Error registering user:", error);
-      throw error;
     }
   };
 
